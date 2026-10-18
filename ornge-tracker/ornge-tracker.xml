@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>ornge-tracker</Name>
+  <Repository>ghcr.io/hazardousmedic/ornge-tracker:latest</Repository>
+  <Registry>https://github.com/hazardousmedic/ornge-tracker/pkgs/container/ornge-tracker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/hazardousmedic/ornge-tracker/issues</Support>
+  <Project>https://github.com/hazardousmedic/ornge-tracker</Project>
+  <Overview>Live map of Ornge (Ontario air ambulance) aircraft from public ADS-B data, with last-known positions for the whole fleet.</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/hazardousmedic/unraid-templates/main/ornge-tracker/ornge-tracker.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/hazardousmedic/unraid-templates/main/ornge-tracker/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="8080" Default="8095" Mode="tcp" Description="Host port for the map page (container listens on 8080)" Type="Port" Display="always" Required="true" Mask="false">8095</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/ornge-tracker" Mode="rw" Description="Saved last positions (state.json) and manual fleet list (fleet.json)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/ornge-tracker</Config>
+  <Config Name="Time zone" Target="TZ" Default="America/Toronto" Mode="" Description="Time zone for log timestamps" Type="Variable" Display="always" Required="false" Mask="false">America/Toronto</Config>
+  <Config Name="FlightAware API key" Target="AEROAPI_KEY" Default="" Mode="" Description="Optional AeroAPI key (flightaware.com/aeroapi). Adds filed destination and ETA for flights with a flight plan." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="ADS-B API" Target="ADSB_API" Default="https://opendata.adsb.fi/api" Mode="" Description="Any readsb-style v2 API, e.g. https://api.adsb.lol" Type="Variable" Display="advanced" Required="false" Mask="false">https://opendata.adsb.fi/api</Config>
+  <Config Name="ADS-B fallback API" Target="ADSB_FALLBACK" Default="https://api.adsb.lol" Mode="" Description="Comma-separated APIs tried in order when the main one fails or rate-limits (empty = none)" Type="Variable" Display="advanced" Required="false" Mask="false">https://api.adsb.lol</Config>
+  <Config Name="Poll interval (s)" Target="POLL_INTERVAL" Default="15" Mode="" Description="Seconds between position polls of the fleet" Type="Variable" Display="advanced" Required="false" Mask="false">15</Config>
+  <Config Name="Callsign scan interval (s)" Target="SCAN_INTERVAL" Default="180" Mode="" Description="Seconds between PUL callsign scans over Ontario (0 = off)" Type="Variable" Display="advanced" Required="false" Mask="false">180</Config>
+  <Config Name="Trail minutes" Target="TRAIL_MINUTES" Default="120" Mode="" Description="How much flight trail to keep and draw" Type="Variable" Display="advanced" Required="false" Mask="false">120</Config>
+  <Config Name="Live seconds" Target="LIVE_SECONDS" Default="90" Mode="" Description="A position older than this is shown as last known" Type="Variable" Display="advanced" Required="false" Mask="false">90</Config>
+  <Config Name="FlightAware daily request limit" Target="AEROAPI_DAILY_LIMIT" Default="30" Mode="" Description="Max AeroAPI requests per day, to stay within the free monthly credit" Type="Variable" Display="advanced" Required="false" Mask="false">30</Config>
+  <Config Name="FlightAware refresh (min)" Target="AEROAPI_REFRESH_MIN" Default="30" Mode="" Description="Re-check a live flight's ETA this often (0 = once per flight)" Type="Variable" Display="advanced" Required="false" Mask="false">30</Config>
+  <Config Name="FlightAware skip types" Target="AEROAPI_SKIP_TYPES" Default="A139" Mode="" Description="Aircraft types never looked up (helicopters rarely file)" Type="Variable" Display="advanced" Required="false" Mask="false">A139</Config>
+</Container>
