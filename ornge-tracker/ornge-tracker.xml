@@ -33,4 +33,5 @@
   <Config Name="FlightAware daily request limit" Target="AEROAPI_DAILY_LIMIT" Default="30" Mode="" Description="Max AeroAPI requests per day, to stay within the free monthly credit" Type="Variable" Display="advanced" Required="false" Mask="false">30</Config>
   <Config Name="FlightAware refresh (min)" Target="AEROAPI_REFRESH_MIN" Default="30" Mode="" Description="Re-check a live flight's ETA this often (0 = once per flight)" Type="Variable" Display="advanced" Required="false" Mask="false">30</Config>
   <Config Name="FlightAware skip types" Target="AEROAPI_SKIP_TYPES" Default="A139" Mode="" Description="Aircraft types never looked up (helicopters rarely file)" Type="Variable" Display="advanced" Required="false" Mask="false">A139</Config>
+  <Config Name="Airport regions" Target="AIRPORT_REGIONS" Default="CA-ON" Mode="" Description="OurAirports regions used for destination lines, e.g. CA-ON,CA-QC,CA-MB (empty = worldwide)" Type="Variable" Display="advanced" Required="false" Mask="false">CA-ON</Config>
 </Container>
